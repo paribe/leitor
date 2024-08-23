@@ -1,7 +1,7 @@
 import streamlit as st
 from gtts import gTTS
-from playsound import playsound
 import os
+import pygame
 
 # Criar um dicionário com os idiomas e seus respectivos códigos
 languages = {
@@ -46,13 +46,32 @@ if st.button("Gerar Áudio"):
         # Conversão de texto para fala
         tts = gTTS(texto, lang=lingua)
         audio_path = "audio.mp3"
+        
+        # Remover o arquivo de áudio se ele já existir
         if os.path.exists(audio_path):
             os.remove(audio_path)
 
         tts.save(audio_path)
-        # Reproduzindo o áudio
-        playsound("audio.mp3")
         
+        # Inicializar o mixer do pygame
+        pygame.mixer.init()
+        
+        # Carregar e reproduzir o áudio
+        pygame.mixer.music.load(audio_path)
+        pygame.mixer.music.play()
+
+        # Esperar a reprodução terminar antes de tentar excluir o arquivo
+        while pygame.mixer.music.get_busy():
+            pygame.time.Clock().tick(10)
+        
+        # Descarregar o mixer e fechar o pygame
+        pygame.mixer.music.unload()
+        pygame.mixer.quit()
+
+        # Excluir o arquivo após a reprodução
+        if os.path.exists(audio_path):
+            os.remove(audio_path)
+
         st.success("Áudio gerado e reproduzido com sucesso!")
     else:
         st.warning("Por favor, insira um texto para conversão.")
