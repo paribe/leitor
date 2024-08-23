@@ -685,6 +685,16 @@ typing = ["typing-extensions"]
 xmp = ["defusedxml"]
 
 [[package]]
+name = "playsound"
+version = "1.2.2"
+description = "Pure Python, cross platform, single function module with no dependencies for playing sounds."
+optional = false
+python-versions = "*"
+files = [
+    {file = "playsound-1.2.2-py2.py3-none-any.whl", hash = "sha256:1e83750a5325cbccee03d6e751ba3e78c037ac95b95a3ba1f38d0c5aca9e1a34"},
+]
+
+[[package]]
 name = "protobuf"
 version = "5.27.3"
 description = ""
@@ -1171,4 +1181,4 @@ watchmedo = ["PyYAML (>=3.10)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "b577970f7492ce4d71535f3b87b068328c998154f3b6b7384ec7e729283f6d52"
+content-hash = "8cf07bba6626a7f162e44fe98404eb50ec4abc1067d18c680789334418272ef4"

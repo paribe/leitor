@@ -10,6 +10,7 @@ python = "^3.12"
 gtts = "^2.5.3"
 ffmpeg = "^1.4"
 streamlit = "^1.37.1"
+playsound = "1.2.2"
 
 
 [build-system]
